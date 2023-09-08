@@ -20,6 +20,7 @@ const path = require('path')
 // importing the hbs library (used to work with partials) from npm library third party module
 const hbs = require('hbs')
 
+const port = process.env.PORT || 3000
 
 
 //importing the own module created by ourself(javascript file created and exporting the required data in the javascript file, so that data will be accessed from the javascript file where it loads the module .)
@@ -342,6 +343,6 @@ app.get('*', (req, res) => {
 // listen method contains two arguments , one is port number and other is callback synchronous function that will run instantly when server is running, we can use console.log inside this function to indicate sever is up.
 // when web server starts and it will keep on listening for incoming requests, so to stop use ctrl+c to shutdown server in terminal
 
-app.listen(3000, () => {
-    console.log("server is up on port 3000")
+app.listen(port, () => {
+    console.log(`server is up on port ${port}`)
 })

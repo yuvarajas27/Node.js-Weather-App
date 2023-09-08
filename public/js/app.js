@@ -61,7 +61,7 @@ weatherForm.addEventListener("submit", (e) => {
 
     // then method is part of a much bigger API we'll be exploring later in the class known as Promises. We're going to explore Promises and its companion, Async/await, in detail in just a couple of sections when we learn how to connect node JS to a database.
 
-    fetch(`http://localhost:3000/weather?address=${location}`).then((response) => {
+    fetch(`/weather?address=${location}`).then((response) => {
 
         // response.json() function is going to run when the JSON data has arrived and been parsed,we have access to the parsed data called javascript object(first and only argument) in callback function and can be used inside the callback function to whatever we want to do.
         response.json().then((data) => {
