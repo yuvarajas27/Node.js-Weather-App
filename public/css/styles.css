@@ -1,0 +1,165 @@
+/* 
+margin - space outside the box 
+padding -space inside the box
+*/
+
+body {
+    /* setting color for body contents */
+    color: #333333;
+
+    /* setting font-family for body contents */
+    font-family: arial;
+
+    /* restricting the page width to maximum 650 pixels(px) */
+    max-width: 500px;
+
+    /* setting margin top and bottom to 0 and left and right to auto, it will adjust according to page size */
+    margin: 0px auto;
+
+    /* setting padding top and bottom to 0 and left and right to 16 px */
+    padding: 0 16px;
+
+    /*using flexbox and 1st column is wrapping the header in container using <div> </div> tag and 2nd column is footer */
+    display: flex;
+
+    /*setting the flexbox to add columns instead of row , because row is a default value */
+    flex-direction: column;
+
+    /* setting the height for the body to take up the entire browser height, so setting minimum height equals to browser height 100vh(view port),view port is the box where our contents showsup  */
+    min-height: 100vh;
+
+    /* setting the background-color */
+    background-color: #d6f5f5;
+}
+
+/* selecting the input text box */
+input {
+    height: 30px;
+
+    width: 380px;
+
+    /* setting border size to 1 px and border style as solid and border color as black in shorthand property syntax */
+    border: 1px solid grey;
+
+    /* setting border to rounded corners */
+    border-radius: 70px;
+
+    font-size: 15px;
+
+    margin-bottom: 15px;
+
+    padding-left: 30px;
+
+    padding-right: 0px;
+
+
+}
+
+/* selecting the div tag with class container having header(data coming from partial) and <p> tag */
+.main-content {
+    /* This allows a given element to grow to take up as much space as it needs. when we set to 1 which tells flexbox that the main content should take up all leftover space.*/
+    flex-grow: 1;
+}
+
+/* selecting the footer tag*/
+footer {
+    color: black;
+    /* setting border top to 1 pixel and border type as solid and border color in hex format*/
+    border-top: 1px solid black;
+    margin-top: 16px;
+    padding: 16px 0;
+}
+
+/* selecting header h1 tag */
+h1 {
+    font-size: 80px;
+    margin-bottom: 16px;
+}
+
+
+/* selecting header div tag*/
+header div {
+    margin-left: 7px;
+}
+
+
+
+/* selecting the header tag */
+header {
+    margin-top: 16px;
+    margin-bottom: 48px;
+    margin-left: 35px;
+
+
+
+}
+
+
+/* selecting anchor tag present in header tag */
+header a {
+    color: #888888;
+    margin-right: 20px;
+
+    /* setting text-decoration to none ,so underline text will be removed , by default it will be there for anchor tag links */
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+/* selecting portrait class for img tag and setting width of image, height will be adjusted automatically and image looks fine */
+.portrait {
+    width: 250px;
+    margin-left: 35px;
+}
+
+/* selecting the <p> tag with weather page definition text in index.hbs and setting the font-size */
+.definition {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+/* selecting the <p> tag where weather forecast data shows */
+#message-1 {
+    font-size: 25px;
+}
+
+/* selecting the form element, it will select all the form tags*/
+form {
+    margin-bottom: 10px;
+}
+
+/* selecting the weather picture dynamically come from weather stack api <img> tag */
+.weather-picture {
+    margin-top: 20px;
+    margin-left: 50px;
+    display: block;
+    border-radius: 100px;
+}
+
+
+/* selecting the submit button in index.hbs*/
+.submit {
+    margin: 0 150px;
+    cursor: pointer;
+    border: 1px solid grey;
+    /* setting padding top and bottom to 5px and left and right to 25 px */
+    padding: 5px 15px;
+    border-radius: 15px;
+
+}
+
+/* selecting the <p> tag for my intro definition in about.hbs*/
+.my-intro {
+    font-size: 20px;
+    margin-left: 35px;
+
+}
+
+/* selecting the <p> tag for help contebt in help.hbs*/
+.help {
+    font-size: 20px;
+    margin-left: 35px;
+
+
+}

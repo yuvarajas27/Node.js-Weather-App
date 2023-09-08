@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Weather</title>
+    <link rel="icon" href="img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+    <div class="main-content">
+        <!-- To pass partials(data present in hbs file in partials directory) to views file (here), use > in double curly braces and followed by partial file name without extension -->
+        {{>header}}
+
+        <!-- To load node provided value in html file with handlebar extension .hbs , use {{node_provided_value}} like below -->
+
+        <p class="definition">Use this site to get your weather!</p>
+
+        <form>
+            <input placeholder="Search by Location or Latitude,Longitude or Zipcode"><br>
+            <button class="submit" type="submit"> Search </button>
+
+        </form>
+
+        <p id="message-1"></p>
+
+        <script src="/js/app.js"></script>
+
+    </div>
+
+
+    <!-- To pass partials(data present in hbs file in partials directory) to views file (here), use > in double curly braces and followed by partial file name without extension -->
+    {{>footer}}
+
+</body>
+
+</html>
