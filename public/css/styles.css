@@ -106,11 +106,12 @@ header a {
 
 }
 
-/* selecting portrait class for img tag and setting width of image, height will be adjusted automatically and image looks fine */
+/* selecting portrait class for img tag and setting width of image, height will be adjusted automatically and image looks fine 
 .portrait {
     width: 250px;
     margin-left: 35px;
 }
+*/
 
 /* selecting the <p> tag with weather page definition text in index.hbs and setting the font-size */
 .definition {
