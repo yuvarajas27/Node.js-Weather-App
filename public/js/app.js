@@ -1,6 +1,3 @@
-// This is client side JavaScript which is going to run in the browser only.
-console.log('Client side Javascript is loaded')
-
 // All console.log ()here will be shown in browser (right click on empty page in browser->inspect)->console
 
 // selecting the form element in index.hbs
