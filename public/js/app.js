@@ -61,6 +61,9 @@ weatherForm.addEventListener("submit", (e) => {
 
     // then method is part of a much bigger API we'll be exploring later in the class known as Promises. We're going to explore Promises and its companion, Async/await, in detail in just a couple of sections when we learn how to connect node JS to a database.
 
+    // If we're on local host,we wanna make the request to local host.If we're on our special Heroku or cyclic app URL,we wanna make the request to that URL.
+    // to address this, we wanna remove the domain completely. http://localhost:3000/  in http://localhost:3000/weather?address= , so if heroku or cyclic url, it will look for that specific domain,for local host, it will look for locall host domain like we did for abou,help,weather page routing in weather app home page in header partial.
+
     fetch(`/weather?address=${location}`).then((response) => {
 
         // response.json() function is going to run when the JSON data has arrived and been parsed,we have access to the parsed data called javascript object(first and only argument) in callback function and can be used inside the callback function to whatever we want to do.

@@ -20,6 +20,8 @@ const path = require('path')
 // importing the hbs library (used to work with partials) from npm library third party module
 const hbs = require('hbs')
 
+
+// extract the port value that Heroku or cyclic provides.That is available at process.env. Env is an object and it's where we can access environment variables.Now this is exactly what Heroku or cyclic sets and we'll learn how to set our own a bit later in the class. Now, this is only gonna be set on Heroku, or cyclic which means that when we run the app locally,it fails using 3000as a backup port value.
 const port = process.env.PORT || 3000
 
 
@@ -343,6 +345,68 @@ app.get('*', (req, res) => {
 // listen method contains two arguments , one is port number and other is callback synchronous function that will run instantly when server is running, we can use console.log inside this function to indicate sever is up.
 // when web server starts and it will keep on listening for incoming requests, so to stop use ctrl+c to shutdown server in terminal
 
+
+//We can use port 3000 when we're running the app locally on our machine, but Heroku or cyclic is going to provide us with a port value that we have to use when our app is running on Heroku or cyclic. Now, this isn't a static value, We can hard code in the project. This is a value that changes over time, and it's provided to our application via an environment variable. An environment variable is just a key value pair set at the OS level. In this case, Heroku or cyclic sets one for the port where the value is the port number to use.
+
 app.listen(port, () => {
     console.log(`server is up on port ${port}`)
 })
+
+
+/* In  
+// We created the start script, because of that is what Heroku or cyclic(deployment app) is looking for when it starts up our application., we can use this command like 
+npm run start 
+in locally on our machine also in terminal.
+"scripts": {
+    "start": "node src/app.js"
+    "dev": "nodemon src/app.js -e js,hbs"
+},
+
+
+
+
+
+we're going to create a second script, a development script, which is going to run that nodemon command. So currently, when we wanna start up our server using nodemon, we have to type out the command from the terminal every single time.
+
+"scripts": {
+    "start": "node src/app.js"
+    "dev": "nodemon src/app.js -e js,hbs"
+},
+order doesn't matter for scripts creation and we can choose property names as also our wish.
+
+
+
+so, with dev script in place, it's gonna be a lot easier for folks to start up the Dev server. It's gonna be easier for us to rerun the command, something we've had to type out so far and as we collaborate with others they'll be able to use the dev script as well, to start up that local development server easily.
+
+Otherwise, they'd have to figure out exactly what's needed, and then have to go through that whole problem of figuring out the need to add the HBS extension as well.
+
+If there's a command we're using often in a project, it's best to create a script that runs it, so it's reusable and accessible to everyone, even if its you it's nice to be able to reuse that script without typing things out again.
+
+so we can use this command like
+npm run dev 
+in locally on our machine also in terminal.
+
+it's time to talk about the one catch to this solution. The only reason the dev script works is because we have nodemon installed as a global module. When we have global modules installed, it's difficult for other people to know they needed to install them or different in versions we insalled differ from others, but they can't able to know that. The problem with global modules is that they're not local dependencies. So, if we're using them in a specific project, it's best to try to install everything locally.
+
+
+So, imagine if I gave this project to someone else.Let's say I push this up to a public GitHub repository.Someone decides they want to add a new feature.I say, yeah, go for it and I will integrate that into my project.So, they download the code and they don't get node modules because that's ignored with Gitignore, and that's fine. They'll be able to run npm install command, it'll dig through the dependencies in packakge.json and package-lock.json files and it'll get all the modules installed.Node modules will get generated for them on their machine.It'll have express, it'll have HBS and it'll have request.
+
+
+The problem is that when they go to use that dev script, it fails because while our project technically depends on nodemon, it does not have it as a dependency. And that is a problem. 
+So, the solution is to uninstall nodemon globally using below command and to install it as a local dependency.
+npm uninstall nodemon -g
+Now, when we run this, it's going to remove nodemon, which means we can no longer run it from the terminal
+
+
+To install nodemon as a local dependency , use below command 
+npm install nodemon@1.2.0 --save-dev
+When we install something and we use --save-dev,it lists it as a dev dependency in our project.So here under package.json, we have dependencies, in this we have express, HBS and request for weather application.we have dev dependencies and for this we just have nodemon.
+
+Dev dependencies are dependencies you only need on your local machine while you're developing.These dependencies aren't installed in your production environment Which means that nodemon is not installed on Heroku or cyclic,etc. deployment apps . Heroku or  cyclic or etc.. never uses the dev script, beacause it uses only start script. By adding nodemon as a dev dependency,we're saving time preventing Heroku or cyclic from having to install things it's not gonna use.You could easily install this as a regular dependency and the application would still work like it's working. Now, the only difference by breaking it out into a dev dependency is that it's not installed on the production environment which once again just saves us a little bit of time..
+
+nodemon will not work from terminal because we uninstalled globally.But In package.json in Scripts, they can use commands from locally installed modules, that is it will install nodemon locally (not in production environment, whilw working with local host)for particular project folder because it's present in dev dependency. So here, it is perfectly valid to use nodemon because nodemon is installed as a dependency.
+
+
+
+*/
+
