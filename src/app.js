@@ -105,7 +105,7 @@ app.set('views', viewsPath)
 // registerpartials method in hbs takes a path to the directory where your partials live. so handlebars know where the partial files(files that can be reused) present to reuse in views file(dynamic files), but contents inside headers.hbs file in partials directory is not complete html, it's just a part of web page(here only needed html contents placed here)
 // Then we are creating a partial for header named header.hbs in partials directory, This is a header that we're gonna show on all of the pages(dynamic pages served up from views directory) throughout our site.
 // In header.hbs partial file in partial directory, node provided value can be accessed , because node provided value can be passed as javascript object in res.render,so this value can be accessed for specifie route in app.get method, but header.hbs is a partial file common for all view files, so it can be accessed like accessed in views directory files. 
-// we also added navigation bar in heade.hbs in partials directory, it can be shown on all view pages(dyanamic pages) , because we mentioned to use header,hbs content in all views file , so importnat use of partial is to reuse the needed content in all pages. 
+// we also added navigation bar in heade.hbs in partials directory, it can be shown on all view pages(dyanamic pages) , because we mentioned to use header,hbs content in all views file , so important use of partial is to reuse the needed content in all pages. 
 // For e.g header is present in partial file and its mentioned to use partials in all views file, if any changes needed in header, we can change contents in partial file because it reflects in all view files . Fantastic!!
 hbs.registerPartials(partialsPath)
 

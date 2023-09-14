@@ -53,7 +53,7 @@ weatherForm.addEventListener("submit", (e) => {
 
     // fetch API is not part of JavaScript. It is a browser based API which means it's something we can use in all modern browsers, but it's not accessible in node JS.
 
-    // So the code we write inside of here is not gonna be something you'll be able to use in a backend node script, Here this script is running in client side Java script. so using the Fetch API is perfectly fine.
+    // So the code we write inside of here is not gonna be something you'll not be able to use in a backend node script, Here this script is running in client side Java script. so using the Fetch API is perfectly fine.
 
     // Now fetch is a function, so we're going to call it and it accepts url(site we are firing for request) as a argument, calling Fetch in our client side Java script is gonna kick off an asynchronous IO operation, much like calling a request in node JS did.That means we don't have access to the data right away, Instead, we provide a function(then) and that function will run at some point in the future when the data is available.
 
