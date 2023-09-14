@@ -47,7 +47,8 @@ const forecast = (address, callback) => {
             let weather_description = body.current.weather_descriptions[0]
             let temperature = body.current.temperature
             let feelslike = body.current.feelslike
-            let data = `${weather_description} .It is Currently ${temperature} degrees out. It feels like ${feelslike} degrees out `
+            let humidity = body.current.humidity
+            let data = `${weather_description}. It is Currently ${temperature} degrees out. It feels like ${feelslike} degrees out. The humidity is ${humidity}% `
             let weather_image_link = body.current.weather_icons[0]
             // calling the callback function with error and data arguments provided
             callback(undefined, data, weather_description, weather_image_link)
