@@ -200,7 +200,7 @@ app.get('/help', (req, res) => {
     // res.render method takes two arguments,the first argument is the name of the view provide without extension is enough (here we can provide index as a name for file index.hbs in templates->view directory) and it will check the files default in views directory alongside of node modules and alongside of source but if we provide our custom path to check dynamic contents above, it wil check on that(here templates->view directory->help.hbs ) and the second argument is an object which contains all of the values you want that view to be able to access.
     res.render('help', {
         help: "Help: Get weather data by following formats :",
-        helpText1: 'By providing address(e.g Arumbakkam)',
+        helpText1: 'By providing address in correct spelling(e.g Arumbakkam)',
         helpText2: 'By latitude,longitude(e.g 10.15,11.01)',
         title: 'Help',
         name: 'Yuvaraja'
