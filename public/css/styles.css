@@ -19,7 +19,7 @@ body {
     /* setting padding top and bottom to 0 and left and right to 16 px */
     padding: 0 16px;
 
-    /*using flexbox and 1st column is wrapping the header in container using <div> </div> tag and 2nd column is footer */
+    /*using flexbox and 1st column is wrapping the header in container using <div> many tags inside </div> tag and 2nd column is footer */
     display: flex;
 
     /*setting the flexbox to add columns instead of row , because row is a default value */

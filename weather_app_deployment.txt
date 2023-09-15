@@ -1,0 +1,101 @@
+To deploy node.js application into production server 
+
+We are working with three popular tools Git, GitHub, and Heroku.
+
+Git is gonna allow us to put our application under version control.That's going to allow us to track the changes to our app over time.
+
+GitHub is going to allow us to back up our source code and collaborate with others.
+
+Finally, Heroku is gonna give us everything we need to deploy our Node.js applications to a production server so our app is accessible with just a single URL.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+GitHub is the very popular software development platform which gives us all of the tools necessary to manage software development projects, whether we're working by ourselves or whether we're working with others
+
+Heroku gives us all of the tools and infrastructure needed to actually deploy our node JS applications to a production ready server.
+
+GitHub, as I mentioned, is a development platform making it easy to manage our projects. This is gonna make it easy to track code changes over time to collaborate with others and to track bugs issues and feature requests. Now, all of those NPM modules we installed all of their code is actually hosted on GitHub. With GitHub, you could host public or private projects.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+When you're using Git and you're using npm you don't want Git to track the node modules folder as this is a generated directory. We can always recreate it by running npm install command
+npm install run command is going to use the contents of package.json and package-lock.json to bring the node_modules directory back to its exact state. So Git doesn't need to know what's inside of node modules. What's inside of there is a ton of other files and folders that are already under version control by the project owners.Now Git gives us a very easy way to ignore things from our setup.
+
+We do that by creating a new file in the repository route.So,create a new file .gitignore(spelling should be correct) in web-server directory - In this , we can list out the things we don't want Git to track and for us that's going to be node_modules/.Now when we do this Git is not going to track that directory. Even if we tried to use Git Add, we'll see that it won't show up under untracked files and we can go ahead and rerun Git status to prove that. You'll notice that up above node modules is now grayed out. This is Visual Studio Code letting us know that while this thing exists it has been ignored by version control.
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+version control basics 
+
+untracked files 
+
+staged changes 
+
+unstaged changes 
+
+commit 
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Setting up SSH Keys
+
+In this lesson, you’ll be setting up SSH on your machine. SSH is the protocol used to
+securely transfer code between your machine and GitHub/Heroku.
+
+Creating SSH Keys
+Windows users won’t have access to the necessary SSH commands from the command
+prompt. Make sure to use Git Bash for the following commands.
+
+SSH uses an SSH key pair to secure the connection between your machine and the
+machine you’re communicating with. 
+You can check if you already have an SSH key pair
+with the following command. You have a key pair if you see id_rsa and id_rsa.pub in the
+output.
+
+ls -a -l ~/.ssh
+-a shows hidden files like .(dot) files  
+-l shows data in top to bottom instead of columns , easy to understand.
+~/.ssh - path to the folder of which we are trying to print its contents.
+    ~ is a shortcut for your user directory,then we're looking for the .ssh folder.
+
+output may be no file directory or file directory present with no id_rsa and id_rsa.pub files
+
+id_rsa = This is a secret file, which we're gonna keep on our machine and we're never gonna share with anyone.
+id_rsa.pub =This is a public file and this is something we're gonna share with both GitHub and Heroku so it can secure the communication between our machine and their servers.
+
+You can create a new key pair using the following command. Make sure to swap out the
+email for your email address.
+
+ssh-keygen -t rsa -b 4096 -C "youremail@domain.com"
+-t stands for type rsa, secure protocol 
+-b for bits 4096
+-C stands for email id
+
+
+The SSH key needs to be configured to be used for new SSH connections. First, ensure
+that the SSH agent is running. You can do that using the command below.
+
+eval $(ssh-agent -s)
+
+
+Next, add the new SSH private key file to the SSH agent. The following command is for
+macOS users.
+ssh-add -K ~/.ssh/id_rsa
+The command below is for Linux users and Windows users.
+Version 1.0 56
+ssh-add ~/.ssh/id_rsa
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Refer more for deployment doubts in deployment notes in andrew mead pdf.
+
+

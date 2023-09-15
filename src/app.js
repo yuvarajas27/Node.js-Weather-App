@@ -21,7 +21,7 @@ const path = require('path')
 const hbs = require('hbs')
 
 
-// extract the port value that Heroku or cyclic provides.That is available at process.env. Env is an object and it's where we can access environment variables.Now this is exactly what Heroku or cyclic sets and we'll learn how to set our own a bit later in the class. Now, this is only gonna be set on Heroku, or cyclic which means that when we run the app locally,it fails using 3000as a backup port value.
+// extract the port value that Heroku or cyclic provides.That is available at process.env. Env is an object and it's where we can access environment variables.Now this is exactly what Heroku or cyclic sets and we'll learn how to set our own a bit later in the class. Now, this is only gonna be set on Heroku, or cyclic which means that when we run the app locally,it fails so using 3000 as a backup port value.
 const port = process.env.PORT || 3000
 
 
@@ -54,7 +54,7 @@ console.log(publicDirectoryPath)
 
 
 
-// creating viewsPath (all dynamic files(dyanmic pages) to serve up will be present here)
+// creating viewsPath (all dynamic files(dynamic pages) to serve up will be present here)
 const viewsPath = path.join(__dirname, '../templates/views')
 
 // creating partialsPath (all partial files(files that can be reused in views directory files(dynamic pages)) to serve up will be present here)
@@ -93,7 +93,7 @@ app.set('view engine', 'hbs')
 // settting up another setting for Express, and this one is called views.
 // Remember We don't have to set it this setting in order to use handlebars, its already proven. 
 // Normally Handlebars templates(pages to be loaded dynamically) should be placed in views directory (express will look for this directory default )that will be served up dynamic contents in website using handlebars, but if we want express to lookup for some other directory to look up for dynamic content, use below line .
-// In our case, setting key as a 'views'(mentioning express to see Handlebars templates(dynamic pages to be loaded)in the path mentioned rather than looking on views directory default) and value as a viewPath(path where pages to be loaded dynamically files present)
+// In our case, setting key as a 'views'(mentioning express to see Handlebars templates(dynamic pages to be loaded)in the path mentioned rather than looking on views directory as default) and value as a viewPath(path where pages to be loaded dynamically files present)
 app.set('views', viewsPath)
 
 
@@ -107,7 +107,7 @@ app.set('views', viewsPath)
 // registerpartials method in hbs takes a path to the directory where your partials live. so handlebars know where the partial files(files that can be reused) present to reuse in views file(dynamic files), but contents inside headers.hbs file in partials directory is not complete html, it's just a part of web page(here only needed html contents placed here)
 // Then we are creating a partial for header named header.hbs in partials directory, This is a header that we're gonna show on all of the pages(dynamic pages served up from views directory) throughout our site.
 // In header.hbs partial file in partial directory, node provided value can be accessed , because node provided value can be passed as javascript object in res.render,so this value can be accessed for specifie route in app.get method, but header.hbs is a partial file common for all view files, so it can be accessed like accessed in views directory files. 
-// we also added navigation bar in heade.hbs in partials directory, it can be shown on all view pages(dyanamic pages) , because we mentioned to use header,hbs content in all views file , so important use of partial is to reuse the needed content in all pages. 
+// we also added navigation bar in header.hbs in partials directory, it can be shown on all view pages(dynamic pages) , because we mentioned to use header.hbs content in all views file , so important use of partial is to reuse the needed content in all pages. 
 // For e.g header is present in partial file and its mentioned to use partials in all views file, if any changes needed in header, we can change contents in partial file because it reflects in all view files . Fantastic!!
 hbs.registerPartials(partialsPath)
 
@@ -130,13 +130,13 @@ console.log(__filename) // // it will give the path of the current diectory with
 
 //                                           NOTE!!!!!!!! 
 
-//  express will look for the routes for any pages(home page(''), help page('/help) or /about.html in public path, /about.hbs in view ), it will use the first match whether it is to serve a static file contents in public directory path or server dynamic content in views directory or response we send here in the code itself.
-// /about.html in public /about.hbs in view, suppose if route to serve static content match found, it will execute /about.html or if route to serve dynamic content using files in view, /about.hbs will execute.
+//  express will look for the routes for any pages(home page(''), help page('/help) or /about.html in public path, /about.hbs in view ), it will use the first match whether it is to serve a static file contents in public directory path or serve dynamic content in views directory or response we send here in the code itself.
+// consider /about.html in public and /about.hbs in view, suppose if route to serve static content match found first, it will execute /about.html or if route to serve dynamic content using files in view, /about.hbs will execute if this found first.
 
 
 
 
-// we're gonna do is configure express to serve up an entire directory of assets That could contain HTML files, CSS files client side, JavaScript videos, images and more. 
+// we're gonna do is configure express to serve up an entire directory of assets That could contain HTML files, CSS files ,client side JavaScript ,videos, images and more. 
 // This is gonna live in the web server folder alongside of node modules and alongside of source. And I'm gonna call this public(public directory path).Anything that goes inside of here is gonna be served up as part of our express server. In here, we can put in HTML files and our other assets.
 // app.use method ,As of now we need to know it will use to customize our server, here we customizing server to serve up publicDirectoryPath folder, it will be explained depth later as promise
 // express.static is a function ,it takes the path(here we pass publicDirectoryPath) and in some way it configures to serve up our publicDirectoryPath folder file content (index.html, a special file and it's a default file content will be loaded)in root page of the server by passing the return value to app.use method.
@@ -164,7 +164,7 @@ app.get('', (req, res) => {
     //res.send('Hello Express!')
 
 
-    // To serve dynamic content in views directory, So using render as a response, Render allows us to render one of our views. We've configured Express to use the view engine HBS. So with render, we can render one of our Handlebars templates. 
+    // To serve dynamic content in views directory, using render as a response, Render allows us to render one of our views. We've configured Express to use the view engine HBS. So with render, we can render one of our Handlebars templates. 
     // res.render method takes two arguments,the first argument is the name of the view provide without extension is enough (here we can provide index for file index.hbs in view directory) and the second argument is an object which contains all of the values you want that view to be able to access.
     // res.render('index') - for this line Express goes off and it gets that view(here index.hbs in view directory).express will understand its a html in index.hbs and it then converts it into HTML and html will be loaded in the browser for the requestor.
     // node js value provided here in the second argument as an object for the render will be accessible in the template(index.hbs file in views directory)
@@ -183,7 +183,7 @@ app.get('/about', (req, res) => {
 
 
     // To serve dynamic content in views directory, So using render as a response, Render allows us to render one of our views. We've configured Express to use the view engine HBS. So with render, we can render one of our Handlebars templates. 
-    // res.render method takes two arguments,the first argument is the name of the view provide without extension is enough (here we can provide index for file index.hbs in view directory) and the second argument is an object which contains all of the values you want that view to be able to access.
+    // res.render method takes two arguments,the first argument is the name of the view provide without extension is enough (here we can provide about for file about.hbs in view directory) and the second argument is an object which contains all of the values you want that view to be able to access.
     res.render('about', {
         title: 'About',
         name: 'Yuvaraja',
@@ -199,7 +199,7 @@ app.get('/help', (req, res) => {
     //res.send('Help Page')
 
     // To serve dynamic content in views directory, So using render as a response, Render allows us to render one of our views. We've configured Express to use the view engine HBS. So with render, we can render one of our Handlebars templates. 
-    // res.render method takes two arguments,the first argument is the name of the view provide without extension is enough (here we can provide index as a name for file index.hbs in templates->view directory) and it will check the files default in views directory alongside of node modules and alongside of source but if we provide our custom path to check dynamic contents above, it wil check on that(here templates->view directory->help.hbs ) and the second argument is an object which contains all of the values you want that view to be able to access.
+    // res.render method takes two arguments,the first argument is the name of the view provide without extension is enough (here we can provide help as a name for file help.hbs in templates->view directory) and it will check the files default in views directory alongside of node modules and alongside of source but if we provide our custom path to check dynamic contents above, it wil check on that(here templates->view directory->help.hbs ) and the second argument is an object which contains all of the values you want that view to be able to access.
     res.render('help', {
         help: "Help: Get weather data by following formats :",
         helpText1: 'By providing address in correct spelling(e.g Arumbakkam)',
@@ -223,7 +223,7 @@ app.get('/help', (req, res) => {
 // If we wanted to actually implement some sort of search feature, we would use a query string. Remember query strings get provided on the end of the URL,We start them off with a question mark,then we provide key value pairs to pass additional information to the server.To provide more than one key=value pair use ampersand(&)
 
 //For an e-commerce site,I might want users to be able to search amongst the list of products for a specific one and for that, I could set up a search query argument. 
-//For.eg in local host, loocalhost:3000/products?search=games&rating=5 this is going to fire off another request to our Express server,but it's gonna pass along this two additional information serach=games and rating=5. we are creating the back end so we can support as many query strings as we want. Query string information is available to us inside of our Express route handler. Information about that query string though, that lives on request(req in function callback)
+//For.eg in local host, localhost:3000/products?search=games&rating=5 this is going to fire off another request to our Express server,but it's gonna pass along this two additional information serach=games and rating=5. we are creating the back end so we can support as many query strings as we want. Query string information is available to us inside of our Express route handler. Information about that query string though, that lives on request(req in function callback)
 
 //So The client, whether it's us typing a URL in the browser, or us providing a URL via client side JavaScript, can set up that query string, it gets sent off to the server, the server can use that information with the request, and it can send a response back.
 
@@ -251,7 +251,7 @@ app.get('/weather', (req, res) => {
     geocode.geocode(address, (error, { latitude, longitude, location } = {}) => {
 
         if (error) {
-            // javascript object provided in send method ,express will convert Javascript object TO JSON sting using stringify and show in browser.
+            // javascript object provided in send method ,express will convert Javascript object TO JSON string using stringify and show in browser.
             // This is a failure message response block using the return keyword to stop the function here, we can use else for success block, but it's a common approach
             return res.send({ error })
         }
@@ -261,13 +261,13 @@ app.get('/weather', (req, res) => {
         // callback chaining -- callback function inside another callback function is called callback chaining
         forecast(latitude, longitude, (error, data) => {
             if (error) {
-                // javascript object provided in send method ,express will convert Javascript object TO JSON sting using stringify and show in browser.
-                // This is a failure meesage response block using the return keyword to stop the function here, we can use else for success block, but it's a common approach
+                // javascript object provided in send method ,express will convert Javascript object TO JSON string using stringify and show in browser.
+                // This is a failure message response block using the return keyword to stop the function here, we can use else for success block, but it's a common approach
                 return res.send({ error })
             }
 
             //console.log(`In web-server app.js, location:${location}`)
-            // javascript object provided in send method ,express will convert Javascript object TO JSON sting using stringify and show in browser.
+            // javascript object provided in send method ,express will convert Javascript object TO JSON string using stringify and show in browser.
             return res.send({
                 forecast: data,
                 location,
@@ -287,13 +287,13 @@ app.get('/weather', (req, res) => {
 
     forecast(address, (error, data, weather_description, weather_image_link) => {
         if (error) {
-            // javascript object provided in send method ,express will convert Javascript object TO JSON sting using stringify and show in browser.
+            // javascript object provided in send method ,express will convert Javascript object TO JSON string using stringify and show in browser.
             // This is a failure meesage response block using the return keyword to stop the function here, we can use else for success block, but it's a common approach
             return res.send({ error })
         }
 
         //console.log(`In web-server app.js, location:${location}`)
-        // javascript object provided in send method ,express will convert Javascript object TO JSON sting using stringify and show in browser.
+        // javascript object provided in send method ,express will convert Javascript object TO JSON string using stringify and show in browser.
         return res.send({
             forecast: data,
             address,
@@ -386,7 +386,7 @@ so we can use this command like
 npm run dev 
 in locally on our machine also in terminal.
 
-it's time to talk about the one catch to this solution. The only reason the dev script works is because we have nodemon installed as a global module. When we have global modules installed, it's difficult for other people to know they needed to install them or different in versions we insalled differ from others, but they can't able to know that. The problem with global modules is that they're not local dependencies. So, if we're using them in a specific project, it's best to try to install everything locally.
+it's time to talk about the one catch to this solution. The only reason the dev script works is because we have nodemon installed as a global module. When we have global modules installed, it's difficult for other people to know they needed to install them or problem occurs if different versions we installed, but they can't able to know that. The problem with global modules is that they're not local dependencies. So, if we're using them in a specific project, it's best to try to install everything locally.
 
 
 So, imagine if I gave this project to someone else.Let's say I push this up to a public GitHub repository.Someone decides they want to add a new feature.I say, yeah, go for it and I will integrate that into my project.So, they download the code and they don't get node modules because that's ignored with Gitignore, and that's fine. They'll be able to run npm install command, it'll dig through the dependencies in packakge.json and package-lock.json files and it'll get all the modules installed.Node modules will get generated for them on their machine.It'll have express, it'll have HBS and it'll have request.
@@ -404,7 +404,7 @@ When we install something and we use --save-dev,it lists it as a dev dependency 
 
 Dev dependencies are dependencies you only need on your local machine while you're developing.These dependencies aren't installed in your production environment Which means that nodemon is not installed on Heroku or cyclic,etc. deployment apps . Heroku or  cyclic or etc.. never uses the dev script, beacause it uses only start script. By adding nodemon as a dev dependency,we're saving time preventing Heroku or cyclic from having to install things it's not gonna use.You could easily install this as a regular dependency and the application would still work like it's working. Now, the only difference by breaking it out into a dev dependency is that it's not installed on the production environment which once again just saves us a little bit of time..
 
-nodemon will not work from terminal because we uninstalled globally.But In package.json in Scripts, they can use commands from locally installed modules, that is it will install nodemon locally (not in production environment, whilw working with local host)for particular project folder because it's present in dev dependency. So here, it is perfectly valid to use nodemon because nodemon is installed as a dependency.
+nodemon will not work from terminal because we uninstalled globally.But In package.json in Scripts, they can use commands from locally installed modules, that is it will install nodemon locally (not in production environment, while working with local host)for particular project folder because it's present in dev dependency. So here, it is perfectly valid to use nodemon because nodemon is installed as a dev dependency.
 
 
 

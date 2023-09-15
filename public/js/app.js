@@ -14,15 +14,15 @@ const messageOne = document.querySelector("#message-1")
 const reset = document.querySelector(".reset")
 
 
-// calling addeventlistener for rest button to check for click events, if click event happen, it will run the anonymous function provided as arrow function here.
+// calling addeventlistener for reset button to check for click events, if click event happen, it will run the anonymous function provided as arrow function here.
 // addEventListener accepts two arguments, first one is the name of the event we're trying to listen for.(we have many different events available) and second one is a callback function which runs every single time that event occurs.
-// addEventListener only works if the form is parsed or data is available fro index.hbs,beacuse if we load javascript file <script> tag in <head> tag, this script will run before form is parsed that is in body, so placing <script> tag in body will solve the problem, this file will load after form is parsed in body.
+// addEventListener only works if the form is parsed or data is available from index.hbs,beacuse if we load javascript file <script> tag in <head> tag, this script will run before form is parsed that is in body, so placing <script> tag in body will solve the problem, this file will load after form is parsed in body.
 
 
 // calling addeventlistener for form element to check submit events, if submit event happen, it will run the anonymous function provided as arrow function here.
 weatherForm.addEventListener("submit", (e) => {
 
-    // the default behavior of forms is to completely reload the page and that made sense a long time ago before we had access to good client side JavaScript. Now though, what we're gonna do is use fetch to fetch the data and we'll dynamically add it onto the fly so we don't need to refresh the page a bunch, causing a flash of content or confusing the user.We'll be able to preserve everything on the page like what they've typed inside of the input.To avoid refresh the page on form submission, grab the argument that's provided to our event callback. It is an event object, you could call it event commonly as e qround the web developers and then we use a single method on it.It's the only method we're ever gonna use on this event object called e.preventDefault()
+    // the default behavior of forms is to completely reload the page and that made sense a long time ago before we had access to good client side JavaScript. Now though, what we're gonna do is use fetch to fetch the data and we'll dynamically add it onto the fly so we don't need to refresh the page a bunch, causing a flash of content or confusing the user.We'll be able to preserve everything on the page like what they've typed inside of the input.To avoid refresh the page on form submission, grab the argument that's provided to our event callback. It is an event object, you could call it event commonly as e around the web developers and then we use a single method on it.It's the only method we're ever gonna use on this event object called e.preventDefault()
 
     // Prevent default is going to prevent that default behavior which is to refresh the browser,allowing the server to render a new page and instead, it's gonna do nothing,It's just going to allow us to do whatever we want by letting the function run.
     e.preventDefault()
@@ -30,7 +30,7 @@ weatherForm.addEventListener("submit", (e) => {
     // using the try catch beacause when resetting  (removing) the values (weather forecast data, weather forecast picture) in previous search, in some case no nodes found to be deleted, so at that time , program will not crash and catch will handle the block with console.log() call.
     try {
 
-        // selecting the weather forecast picture using queryselector all , so all weather forecast pictures is selected and stord in a array like format. 
+        // selecting the weather forecast picture using queryselector all , so all weather forecast pictures is selected and stored in a array like format. 
         const element = document.querySelectorAll(".weather-picture");
         console.log(element, element.length)
         // looping the selected array above and removing the pictues using element.remove()
@@ -62,7 +62,7 @@ weatherForm.addEventListener("submit", (e) => {
     // then method is part of a much bigger API we'll be exploring later in the class known as Promises. We're going to explore Promises and its companion, Async/await, in detail in just a couple of sections when we learn how to connect node JS to a database.
 
     // If we're on local host,we wanna make the request to local host.If we're on our special Heroku or cyclic app URL,we wanna make the request to that URL.
-    // to address this, we wanna remove the domain completely. http://localhost:3000/  in http://localhost:3000/weather?address= , so if heroku or cyclic url, it will look for that specific domain,for local host, it will look for locall host domain like we did for abou,help,weather page routing in weather app home page in header partial.
+    // to address this, we wanna remove the domain completely. http://localhost:3000/  in http://localhost:3000/weather?address= , so if heroku or cyclic url, it will look for that specific domain,for local host, it will look for local host domain like we did for about,help,weather page routing in weather app home page in header partial.
 
     fetch(`/weather?address=${location}`).then((response) => {
 

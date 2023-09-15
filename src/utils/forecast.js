@@ -19,9 +19,9 @@ const forecast = (address, callback) => {
     // To add second key value pair, we can do so by using an ampersand, followed by my second key value pair.
     //E.g http://api.weatherstack.com/current?access_key=25d74a742c43b88213b2a24a5096177e&query= ${latitude},${longitude}
     //http://api.weatherstack.com/current -- base url
-    //?access_key=25d74a742c43b88213b2a24a5096177e&query= ${latitude},${longitude} - query string starts with question mark followe by first key:value pair as access_key followed by ampersand(&) and second key:value pair as query=latitude,longitude values.
+    //?access_key=25d74a742c43b88213b2a24a5096177e&query= ${latitude},${longitude} - query string starts with question mark followed by first key:value pair as access_key followed by ampersand(&) and second key:value pair as query=latitude,longitude values.
 
-    //api url, using string literals(`` present above tab key in keyboard) to fit dynamic valuse inside url
+    //api url, using string literals(`` present above tab key in keyboard) to fit dynamic values inside url
     //url = `http://api.weatherstack.com/current?access_key=25d74a742c43b88213b2a24a5096177e&query= ${latitude},${longitude}`
 
     url = `http://api.weatherstack.com/current?access_key=25d74a742c43b88213b2a24a5096177e&query=${address}`
